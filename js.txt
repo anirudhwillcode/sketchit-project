@@ -1,0 +1,29 @@
+// Function to create and append square div elements
+function createSquares() {
+  var container = document.getElementById('container'); // Retrieves the element with the ID 'container' and assigns it to the variable 'container'
+
+  for (var i = 0; i < 16 * 16; i++) { // Loops 256 times to create 256 square div elements
+    var newDiv = document.createElement('div'); // Creates a new <div> element and assigns it to the variable 'newDiv'
+    newDiv.classList.add('square'); // Adds the class 'square' to the newly created <div> element
+    container.appendChild(newDiv); // Appends the new <div> element to the 'container' element
+  }
+
+  // Add event listeners to all square elements
+  var squares = document.querySelectorAll('.square'); // Retrieves all elements with the class 'square' and stores them in the 'squares' variable
+
+  squares.forEach(function(square) { // Iterates through each 'square' element
+    square.addEventListener('mouseenter', function() { // Adds an event listener for 'mouseenter' event on each 'square' element
+      this.classList.add('hovered'); // Adds the class 'hovered' to the current 'square' element when mouse enters
+    });
+
+    // Optionally, if you want the color to persist after hover ends
+    square.addEventListener('mouseleave', function() { // Adds an event listener for 'mouseleave' event on each 'square' element
+      this.classList.add('hovered'); // Adds the class 'hovered' to the current 'square' element even after the mouse leaves
+    });
+  });
+}
+
+// Call the function to create squares when the window loads
+window.onload = function() {
+  createSquares(); // Calls the 'createSquares()' function when the window is fully loaded
+};
